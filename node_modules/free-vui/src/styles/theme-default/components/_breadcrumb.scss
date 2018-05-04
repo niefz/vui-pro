@@ -1,0 +1,29 @@
+.v-breadcrumb {
+  @extend .clearfix;
+  &--item {
+    float: left;
+    &:last-child {
+      .v-breadcrumb--inner {
+        font-weight: 400;
+        cursor: text;
+        &, &:hover {
+          color: $color-text-secondary;
+        }
+      }
+      .v-breadcrumb--separator {
+        display: none;
+      }
+    }
+  }
+  &--inner {
+    font-weight: 600;
+    &:hover {
+      color: $color-primary-hover;
+    }
+  }
+  &--separator {
+    margin: 0 5px;
+    font-weight: 600;
+    color: $color-border;
+  }
+}

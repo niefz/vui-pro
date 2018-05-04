@@ -1,0 +1,23 @@
+.v-backtop {
+  position: fixed;
+  z-index: 100;
+  display: none;
+  right: 100px;
+  bottom: 50px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  &.show {
+    display: block;
+  }
+  &--inner {
+    height: 100%;
+    width: 100%;
+    background-color: $color-primary;
+    border-radius: $border-radius;
+    text-align: center;
+    color: $color-white;
+    overflow: hidden;
+  }
+}

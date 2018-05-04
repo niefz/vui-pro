@@ -1,0 +1,220 @@
+/* mixin */
+@mixin v-menu-item-vertical {
+  display: block;
+  position: relative;
+  padding-right: 20px;
+  &:after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    opacity: 0;
+    transform: scaleY(.0001);
+    transition: transform .3s cubic-bezier(.215, .61, .355, 1), opacity .3s cubic-bezier(.215, .61, .355, 1);
+  }
+  &.active:after {
+    opacity: 1;
+    transform: scaleY(1);
+    transition: transform .3s cubic-bezier(.645, .045, .355, 1), opacity .3s cubic-bezier(.645, .045, .355, 1);
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.disabled {
+    color: $color-text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+@mixin v-menu-item-horizontal {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  &:after {
+    position: absolute;
+    right: 20px;
+    left: 20px;
+    bottom: 0;
+    content: "";
+    border-bottom: 3px solid $color-primary;
+    opacity: 0;
+    transform: scaleX(.0001);
+    transition: transform .3s cubic-bezier(.215, .61, .355, 1), opacity .3s cubic-bezier(.215, .61, .355, 1);
+  }
+  &.active:after {
+    opacity: 1;
+    transform: scaleX(1);
+    transition: transform .3s cubic-bezier(.645, .045, .355, 1), opacity .3s cubic-bezier(.645, .045, .355, 1);
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &.disabled {
+    color: $color-text-disabled;
+    cursor: not-allowed;
+  }
+}
+
+.v-menu {
+  width: 100%;
+  font-size: 14px;
+  transition: background .3s, width .3s;
+  @extend .clearfix;
+}
+
+.v-menu--light {
+  background-color: transparent;
+  .v-menu--item {
+    &-group-title {
+      color: rgba(0, 0, 0, .45);
+    }
+    &.active {
+      color: $color-primary;
+    }
+    &:after {
+      border-right: 3px solid $color-primary;
+    }
+    &:hover {
+      color: $color-primary-hover;
+    }
+  }
+  .v-menu--sub {
+    &-menu {
+      background-color: transparent;
+    }
+    &-arrow {
+      &:before, &:after {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, .65), rgba(0, 0, 0, .65));
+      }
+    }
+  }
+}
+
+.v-menu--light.v-menu--vertical {
+  .v-menu--item.active {
+    background-color: $color-primary-alert;
+  }
+}
+
+.v-menu--dark {
+  background-color: $color-menu-dark;
+  color: hsla(0, 0%, 100%, .65);
+  .v-menu--item {
+    &-group-title {
+      color: hsla(0, 0%, 100%, .45);
+    }
+    &.active {
+      color: $color-white;
+    }
+    &:hover {
+      color: $color-white;
+    }
+  }
+  .v-menu--sub {
+    &-menu {
+      background-color: $color-submenu-dark;
+    }
+    &.expand {
+      .v-menu--sub-title {
+        color: $color-white;
+      }
+      .v-menu--sub-arrow {
+        opacity: 1;
+        &:before, &:after {
+          background-color: $color-white;
+        }
+      }
+    }
+    &-arrow {
+      opacity: .45;
+      &:before, &:after {
+        background-color: $color-white;
+      }
+    }
+  }
+}
+
+.v-menu--dark.v-menu--vertical {
+  .v-menu--item.active {
+    background-color: $color-primary;
+  }
+}
+
+.v-menu--vertical {
+  .v-menu--item {
+    @include v-menu-item-vertical;
+    &-inner {
+      display: block;
+      @extend .text-overflow;
+    }
+    &-group {
+      &-title {
+        display: block;
+        position: relative;
+        padding-right: 20px;
+        h4 {
+          max-width: 80%;
+          height: inherit;
+          @extend .text-overflow;
+        }
+      }
+    }
+  }
+  .v-menu--sub {
+    &-title {
+      display: block;
+      position: relative;
+      padding-right: 20px;
+      cursor: pointer;
+      h4 {
+        max-width: 80%;
+        height: inherit;
+        @extend .text-overflow;
+      }
+      .v-menu--sub-arrow {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        width: 10px;
+        transition: transform .3s cubic-bezier(.645, .045, .355, 1);
+        &:before, &:after {
+          position: absolute;
+          width: 6px;
+          height: 1.5px;
+          content: '';
+          vertical-align: baseline;
+          border-radius: $border-radius;
+          transition: background .3s cubic-bezier(.645, .045, .355, 1), transform .3s cubic-bezier(.645, .045, .355, 1);
+        }
+        &:before {
+          transform: rotate(-45deg) translateX(2px);
+        }
+        &:after {
+          transform: rotate(45deg) translateX(-2px);
+        }
+      }
+    }
+    &.expand {
+      .v-menu--sub-arrow {
+        transform: translateY(-2px);
+        &:before {
+          transform: rotate(45deg) translateX(2px);
+        }
+        &:after {
+          transform: rotate(-45deg) translateX(-2px);
+        }
+      }
+    }
+  }
+}
+
+.v-menu--horizontal {
+  .v-menu--item {
+    @include v-menu-item-horizontal;
+  }
+}
+
+.collapse-transition {
+  transition: .3s height ease-in-out, .3s padding-top ease-in-out, .3s padding-bottom ease-in-out;
+}

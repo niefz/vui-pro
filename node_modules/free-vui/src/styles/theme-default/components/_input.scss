@@ -1,0 +1,191 @@
+.v-input {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: $border-radius;
+  &--mini {
+    height: 28px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &--small {
+    height: 32px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  &--medium {
+    height: 36px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  &--large {
+    height: 40px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+  &--inner {
+    position: relative;
+    display: block;
+    height: 100%;
+    input {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $color-border;
+      background-color: transparent;
+      border-radius: $border-radius;
+      box-sizing: border-box;
+      transition: all .3s cubic-bezier(.645, .045, .355, 1);
+      &:focus {
+        z-index: 2;
+        border-color: $color-primary;
+        box-shadow: 0 0 0 2px rgba(24, 144, 255, .2);
+      }
+      &:disabled {
+        background-color: $color-background;
+      }
+    }
+  }
+  &.error {
+    input {
+      border-color: $color-danger;
+      box-shadow: 0 0 0 2px rgba(245, 34, 45, 0.2);
+    }
+  }
+  &.disabled {
+    background-color: $color-background;
+    cursor: not-allowed;
+    input, em {
+      cursor: not-allowed;
+    }
+  }
+}
+
+.v-input {
+  input {
+    padding: 5px 10px;
+  }
+}
+
+
+.v-input--inner {
+  > em {
+    position: absolute;
+    z-index: 3;
+    top: 6px;
+    bottom: 6px;
+    width: 34px;
+    font-size: 14px;
+    color: $color-text-disabled;
+    text-align: center;
+    cursor: pointer;
+  }
+  &-prefix {
+    left: 0;
+  }
+  &-suffix {
+    right: 0;
+  }
+}
+
+.v-input--prefix {
+  input {
+    padding-left: 34px;
+  }
+}
+
+.v-input--suffix {
+  input {
+    padding-right: 34px;
+  }
+}
+
+.v-input--group {
+  display: inline-table;
+  .v-input--inner {
+    width: calc(100% + 1px);
+  }
+  &-prepend, &-append {
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  &.prepend {
+    .v-input--group-prepend {
+      width: 1px;
+      padding: 0 10px;
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+      white-space: nowrap;
+      border: {
+        top: 1px solid $color-border;
+        bottom: 1px solid $color-border;
+        left: 1px solid $color-border;
+      }
+    }
+  }
+  &.append {
+    .v-input--group-append {
+      width: 1px;
+      padding: 0 20px;
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      white-space: nowrap;
+      border: {
+        top: 1px solid $color-border;
+        right: 1px solid $color-border;
+        bottom: 1px solid $color-border;
+      }
+    }
+  }
+}
+
+.prepend, .slot-prepend {
+  > .v-input--inner {
+    input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.append, .slot-append {
+  > .v-input--inner {
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.slot-prepend {
+  .v-btn {
+    position: relative;
+    z-index: 1;
+    min-width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .v-select {
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.slot-append {
+  .v-btn {
+    position: relative;
+    z-index: 1;
+    min-width: 100%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .v-select {
+    input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

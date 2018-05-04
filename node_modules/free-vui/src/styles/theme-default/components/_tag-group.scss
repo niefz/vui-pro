@@ -1,0 +1,12 @@
+.v-tag-group {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  .v-tag {
+    cursor: pointer;
+    &.checked {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}
