@@ -100,7 +100,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: [
           {
             loader: 'url',
@@ -111,11 +111,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        test: /\.(woff?2|eot|ttf|otf)$/,
         use: [
           {
-            loader: 'file',
-            options: {}
+            loader: 'file'
           }
         ]
       },
@@ -127,7 +126,7 @@ module.exports = {
             options: vueLoaderConfig
           }
         ]
-      },
+      }
     ]
   },
   resolve: {
