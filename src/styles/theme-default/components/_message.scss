@@ -1,0 +1,60 @@
+.v-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  max-width: 50%;
+  min-height: 18px;
+  padding: 10px 20px;
+  border: 1px solid;
+  box-sizing: border-box;
+  border-radius: $border-radius;
+  transform: translateX(-50%);
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity .3s, transform .3s;
+  &--align-left {
+    text-align: left;
+  }
+  &--align-center {
+    text-align: center;
+  }
+  &--align-right {
+    text-align: right;
+  }
+  &--info {
+    border-color: $color-primary-disabled;
+    background-color: $color-primary-alert;
+    color: $color-primary;
+  }
+  &--success {
+    border-color: $color-success-disabled;
+    background-color: $color-success-alert;
+    color: $color-success;
+  }
+  &--warning {
+    border-color: $color-warning-disabled;
+    background-color: $color-warning-alert;
+    color: $color-warning;
+  }
+  &--danger {
+    border-color: $color-danger-disabled;
+    background-color: $color-danger-alert;
+    color: $color-danger;
+  }
+  &--with-icon {
+    padding-left: 30px;
+  }
+  .v-icon {
+    position: absolute;
+    left: 10px;
+    height: 18px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.message-fade-enter,
+.message-fade-leave-active {
+  opacity: 0;
+  transform: translate(-50%, -100%);
+}

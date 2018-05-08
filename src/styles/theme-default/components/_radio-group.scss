@@ -1,0 +1,19 @@
+.v-radio-group {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  &--horizontal {
+    .v-radio + .v-radio {
+      margin-left: 10px;
+    }
+  }
+  &--vertical {
+    .v-radio {
+      display: block;
+      width: 100%;
+      & + .v-radio {
+        margin-top: 10px;
+      }
+    }
+  }
+}

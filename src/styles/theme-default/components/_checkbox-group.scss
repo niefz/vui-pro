@@ -1,0 +1,20 @@
+.v-checkbox-group {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  &--horizontal {
+    .v-checkbox {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  &--vertical {
+    .v-checkbox {
+      display: block;
+      width: 100%;
+      & + .v-checkbox {
+        margin-top: 10px;
+      }
+    }
+  }
+}
