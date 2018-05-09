@@ -14,7 +14,6 @@ module.exports = {
     index: APP_PATH
   },
   output: {
-    publicPath: '/',
     filename: 'assets/js/[name].min.js?v=[hash:8]',
     chunkFilename: 'assets/js/[name].min.js?v=[chunkhash:8]'
   },
@@ -111,7 +110,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff?2|eot|ttf|otf)$/,
+        test: /\.(woff2?|eot|ttf|otf)$/,
         use: [
           {
             loader: 'file'
@@ -132,7 +131,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue'],
     alias: {
-      'vue': 'vue/dist/vue.js',
       '@': APP_PATH
     }
   },
